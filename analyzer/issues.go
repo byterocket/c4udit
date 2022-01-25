@@ -48,13 +48,13 @@ func GasOpIssues() []Issue {
 			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g007---long-revert-strings",
 			"\".{33,}\"", // Anything between "'s with at least 33 characters
 		},
-		// G008 - Shift Right instead of Dividing by 2
+		// G008 - Use Shift Right/Left instead of Division/Multiplication if possible
 		{
 			"G008",
 			GASOP,
-			"Shift Right instead of Dividing by 2",
-			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g008---shift-right-instead-of-dividing-by-2",
-			"(/2|/ 2)",
+			"Use Shift Right/Left instead of Division/Multiplication if possible",
+			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md/#g008---use-shift-rightleft-instead-of-divisionmultiplication-if-possible",
+			`(/[2,4,8]|/ [2,4,8]|\*[2,4,8]|\* [2,4,8])`,
 		},
 	}
 }
