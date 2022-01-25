@@ -68,7 +68,7 @@ func LowRiskIssues() []Issue {
 			LOW,
 			"Unsafe ERC20 Operation(s)",
 			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l001---unsafe-erc20-operations",
-			"(\\.transfer\\(|\\.transferFrom\\(|\\.approve\\()", // ".tranfer(", ".transferFrom(" or ".approve("
+			`\.transfer\(|\.transferFrom\(|\.approve\(`, // ".tranfer(", ".transferFrom(" or ".approve("
 		},
 		// L003 - Unspecific Compiler Version Pragma
 		{
@@ -77,6 +77,14 @@ func LowRiskIssues() []Issue {
 			"Unspecific Compiler Version Pragma",
 			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l003---unspecific-compiler-version-pragma",
 			"pragma solidity (\\^|>)", // "pragma solidity ^" or "pragma solidity >"
+		},
+		// L005 - Do not use Deprecated Library Functions
+		{
+			"L005",
+			LOW,
+			"Do not use Deprecated Library Functions",
+			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l005---do-not-use-deprecated-library-functions",
+			`_setupRole\(|safeApprove\(`, // _setupRole and safeApprove are common deprecated lib functions
 		},
 	}
 }
