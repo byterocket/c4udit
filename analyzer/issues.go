@@ -14,7 +14,7 @@ func GasOpIssues() []Issue {
 			GASOP,
 			"Don't Initialize Variables with Default Value",
 			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g001---dont-initialize-variables-with-default-value",
-			"(= 0|= false)",
+			`(uint[0-9]*[[:blank:]][a-z,A-Z,0-9]*.?=.?0;)|(bool.[a-z,A-Z,0-9]*.?=.?false;)`,
 		},
 		// G002 - Cache Array Length Outside of Loop
 		{
