@@ -49,6 +49,11 @@ func run(report *Report, path string) error {
 	} else {
 		file := path
 
+		// Only analyze Solidity files
+		if !strings.HasSuffix(file, ".sol") {
+			return nil
+		}
+
 		findingsPerIssue, err := analyzeFile(report.Issues, file)
 		if err != nil {
 			return err
