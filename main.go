@@ -64,11 +64,11 @@ Usage:
 	c4udit [flags] [files...]
 
 Flags:
-	-h		Print help text.
-	-s		Save report as file.
+	-h    Print help text.
+	-s    Save report as file.
 
 References:
-	[1]		https://github.com/byterocket/c4-common-issues
+	[1]    https://github.com/byterocket/c4-common-issues
 
 
 Provided with ❤ by ByteRocket
