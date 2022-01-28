@@ -87,7 +87,7 @@ func analyzeFile(issues []Issue, file string) (map[string][]Finding, error) {
 		line := scanner.Text()
 
 		for _, issue := range issues {
-			matched, _ := regexp.Match(issue.Pattern, []byte(line))
+			matched, _ := regexp.MatchString(issue.Pattern, line)
 			if matched {
 				findings[issue.Identifier] = append(findings[issue.Identifier], Finding{
 					IssueIdentifier: issue.Identifier,
