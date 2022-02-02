@@ -14,7 +14,7 @@ func GasOpIssues() []Issue {
 			GASOP,
 			"Don't Initialize Variables with Default Value",
 			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g001---dont-initialize-variables-with-default-value",
-			"(= 0|= false)",
+			`(uint[0-9]*[[:blank:]][a-z,A-Z,0-9]*.?=.?0;)|(bool.[a-z,A-Z,0-9]*.?=.?false;)`,
 		},
 		// G002 - Cache Array Length Outside of Loop
 		{
@@ -48,13 +48,13 @@ func GasOpIssues() []Issue {
 			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g007---long-revert-strings",
 			"\".{33,}\"", // Anything between "'s with at least 33 characters
 		},
-		// G008 - Shift Right instead of Dividing by 2
+		// G008 - Use Shift Right/Left instead of Division/Multiplication if possible
 		{
 			"G008",
 			GASOP,
-			"Shift Right instead of Dividing by 2",
-			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md#g008---shift-right-instead-of-dividing-by-2",
-			"(/2|/ 2)",
+			"Use Shift Right/Left instead of Division/Multiplication if possible",
+			"https://github.com/byterocket/c4-common-issues/blob/main/0-Gas-Optimizations.md/#g008---use-shift-rightleft-instead-of-divisionmultiplication-if-possible",
+			`(/[2,4,8]|/ [2,4,8]|\*[2,4,8]|\* [2,4,8])`,
 		},
 	}
 }
@@ -68,7 +68,7 @@ func LowRiskIssues() []Issue {
 			LOW,
 			"Unsafe ERC20 Operation(s)",
 			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l001---unsafe-erc20-operations",
-			"(\\.transfer\\(|\\.transferFrom\\(|\\.approve\\()", // ".tranfer(", ".transferFrom(" or ".approve("
+			`\.transfer\(|\.transferFrom\(|\.approve\(`, // ".tranfer(", ".transferFrom(" or ".approve("
 		},
 		// L003 - Unspecific Compiler Version Pragma
 		{
@@ -77,6 +77,14 @@ func LowRiskIssues() []Issue {
 			"Unspecific Compiler Version Pragma",
 			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l003---unspecific-compiler-version-pragma",
 			"pragma solidity (\\^|>)", // "pragma solidity ^" or "pragma solidity >"
+		},
+		// L005 - Do not use Deprecated Library Functions
+		{
+			"L005",
+			LOW,
+			"Do not use Deprecated Library Functions",
+			"https://github.com/byterocket/c4-common-issues/blob/main/2-Low-Risk.md#l005---do-not-use-deprecated-library-functions",
+			`_setupRole\(|safeApprove\(`, // _setupRole and safeApprove are common deprecated lib functions
 		},
 	}
 }

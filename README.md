@@ -49,6 +49,26 @@ It is capable of finding low risk issues and gas optimization documented in the
 
 Note that `c4udit` uses [c4-common-issues](https://github.com/byterocket/c4-common-issues)'s issue identifiers.
 
+## Installation
+
+First you need to have the Go toolchain installed. You can find instruction [here](https://go.dev/doc/install).
+
+Then install `c4udit` with:
+```
+$ go install github.com/byterocket/c4udit@latest
+```
+
+To just build the binary:
+```
+$ git clone https://github.com/byterocket/c4udit
+$ cd c4udit/
+$ go build .
+```
+Now you should be able to run `c4udit` with:
+```
+$ ./c4udit
+```
+
 ## Usage
 
 ```
@@ -56,8 +76,8 @@ Usage:
 	c4udit [flags] [files...]
 
 Flags:
-	-h		Print help text.
-	-s		Save report as file.
+	-h    Print help text.
+	-s    Save report as file.
 ```
 
 ## Example

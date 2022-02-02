@@ -49,6 +49,11 @@ func run(report *Report, path string) error {
 	} else {
 		file := path
 
+		// Only analyze Solidity files
+		if !strings.HasSuffix(file, ".sol") {
+			return nil
+		}
+
 		findingsPerIssue, err := analyzeFile(report.Issues, file)
 		if err != nil {
 			return err
@@ -82,7 +87,7 @@ func analyzeFile(issues []Issue, file string) (map[string][]Finding, error) {
 		line := scanner.Text()
 
 		for _, issue := range issues {
-			matched, _ := regexp.Match(issue.Pattern, []byte(line))
+			matched, _ := regexp.MatchString(issue.Pattern, line)
 			if matched {
 				findings[issue.Identifier] = append(findings[issue.Identifier], Finding{
 					IssueIdentifier: issue.Identifier,
